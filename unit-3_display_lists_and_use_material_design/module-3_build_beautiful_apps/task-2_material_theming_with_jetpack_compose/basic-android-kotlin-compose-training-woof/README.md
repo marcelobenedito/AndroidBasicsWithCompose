@@ -5,6 +5,7 @@ The Woof app is a list of dog photos with information about them including their
 
 <p align="center">
   <img src="./asset-docs/demo.png" width="350px" alt="Screenshot displaying the demonstration of Woof app screen.">
+<img src="./asset-docs/demo_dark_mode.png" width="350px" alt="Screenshot displaying the demonstration of Woof app screen.">
 </p>
 
 Getting Started
