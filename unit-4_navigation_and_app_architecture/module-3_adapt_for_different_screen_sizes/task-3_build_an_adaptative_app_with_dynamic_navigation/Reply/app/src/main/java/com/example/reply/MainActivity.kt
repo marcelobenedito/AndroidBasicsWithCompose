@@ -57,3 +57,23 @@ fun ReplyAppCompactPreview() {
         }
     }
 }
+
+@Preview(showBackground = true, widthDp = 700)
+@Composable
+fun ReplayAppMediumPreview() {
+    ReplyTheme {
+        Surface {
+            ReplyApp(windowSize = WindowWidthSizeClass.Medium)
+        }
+    }
+}
+
+@Preview(showBackground = true, widthDp = 1000)
+@Composable
+fun ReplayAppExpandedPreview() {
+    ReplyTheme {
+        Surface {
+            ReplyApp(windowSize = WindowWidthSizeClass.Expanded)
+        }
+    }
+}
