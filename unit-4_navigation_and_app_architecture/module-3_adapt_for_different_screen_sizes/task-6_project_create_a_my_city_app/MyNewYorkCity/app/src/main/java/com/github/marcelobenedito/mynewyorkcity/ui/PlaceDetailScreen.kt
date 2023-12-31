@@ -47,22 +47,32 @@ import com.github.marcelobenedito.mynewyorkcity.ui.theme.MyNewYorkCityTheme
 
 @Composable
 fun PlaceDetailScreen(
-    place: Place,
+    place: Place?,
     modifier: Modifier = Modifier
 ) {
     Box(modifier = modifier) {
         val height = LocalConfiguration.current.screenHeightDp.dp
         // calculate 50% of the height screen in dp unit
         val contentHeight = (height.times(50).div(100))
-        Image(
-            painter = painterResource(id = place.imageIdResource),
-            contentDescription = place.name,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(contentHeight)
-        )
-        PlaceDetailScreenContent(place = place)
+        if (place == null) {
+            Column {
+                Spacer(modifier = Modifier.height(70.dp))
+                IntroductionCard(
+                    text = stringResource(R.string.introduction_details),
+                    modifier = Modifier.padding(end = 16.dp)
+                )
+            }
+        } else {
+            Image(
+                painter = painterResource(id = place.imageIdResource),
+                contentDescription = place.name,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(contentHeight)
+            )
+            PlaceDetailScreenContent(place = place)
+        }
     }
 }
 

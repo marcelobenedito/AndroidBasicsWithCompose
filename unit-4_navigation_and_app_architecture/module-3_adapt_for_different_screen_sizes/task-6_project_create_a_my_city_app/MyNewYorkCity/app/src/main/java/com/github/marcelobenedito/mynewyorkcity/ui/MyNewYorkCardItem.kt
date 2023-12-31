@@ -3,6 +3,7 @@ package com.github.marcelobenedito.mynewyorkcity.ui
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,20 +35,25 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.github.marcelobenedito.mynewyorkcity.R
 import com.github.marcelobenedito.mynewyorkcity.ui.theme.MyNewYorkCityTheme
+import com.github.marcelobenedito.mynewyorkcity.ui.theme.selected_card
 
 @Composable
 fun MyNewYorkCardItem(
     title: String,
     subtitle: String,
     image: Int,
-    modifier: Modifier = Modifier
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    isSelected: Boolean = false
 ) {
     Card(
         colors = CardDefaults.cardColors(
-            containerColor = if (true) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.secondaryContainer
+            containerColor = if (isSelected) selected_card else MaterialTheme.colorScheme.secondaryContainer
         ),
         shape = RoundedCornerShape(15.dp),
         modifier = modifier
+            .clip(RoundedCornerShape(15.dp))
+            .clickable { onClick() }
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -112,7 +118,8 @@ fun MyNewYorkCardItemLightPreview() {
             MyNewYorkCardItem(
                 title = "Coffee Shop",
                 subtitle = "31",
-                image = R.drawable.ic_launcher_background
+                image = R.drawable.ic_launcher_background,
+                onClick = {}
             )
         }
     }
@@ -129,7 +136,8 @@ fun MyNewYorkCardItemDarkPreview() {
             MyNewYorkCardItem(
                 title = "Coffee Shop",
                 subtitle = "31",
-                image = R.drawable.ic_launcher_background
+                image = R.drawable.ic_launcher_background,
+                onClick = {}
             )
         }
     }

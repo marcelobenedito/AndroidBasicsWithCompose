@@ -1,7 +1,6 @@
 package com.github.marcelobenedito.mynewyorkcity.ui
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -25,24 +24,33 @@ import com.github.marcelobenedito.mynewyorkcity.ui.theme.MyNewYorkCityTheme
 
 @Composable
 fun PlacesScreen(
+    currentSelectedPlace: Place?,
     places: List<Place>,
     onPlaceClicked: (Place) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Column(modifier = modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp)) {
-        Text(
-            text = stringResource(id = R.string.places),
-            style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold)
-        )
-        Spacer(modifier = Modifier.height(16.dp))
+    Column(modifier = modifier.padding(horizontal = 16.dp)) {
         LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+            item {
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = stringResource(id = R.string.places),
+                    style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold)
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                IntroductionCard(text = stringResource(R.string.places_introduction))
+            }
             items(places) { place ->
                 MyNewYorkCardItem(
                     title = place.name,
                     subtitle = place.address,
                     image = place.imageIdResource,
-                    modifier = Modifier.clickable { onPlaceClicked(place) }
+                    isSelected = currentSelectedPlace == place,
+                    onClick = { onPlaceClicked(place) }
                 )
+            }
+            item {
+                Spacer(modifier = Modifier.height(16.dp))
             }
         }
     }
@@ -54,6 +62,7 @@ fun PlacesScreenLightPreview() {
     MyNewYorkCityTheme {
         Surface {
             PlacesScreen(
+                currentSelectedPlace = categories[0].places[0],
                 places = categories[0].places,
                 onPlaceClicked = {}
             )
@@ -70,6 +79,7 @@ fun PlacesScreenDarkPreview() {
     MyNewYorkCityTheme {
         Surface {
             PlacesScreen(
+                currentSelectedPlace = categories[0].places[0],
                 places = categories[0].places,
                 onPlaceClicked = {}
             )

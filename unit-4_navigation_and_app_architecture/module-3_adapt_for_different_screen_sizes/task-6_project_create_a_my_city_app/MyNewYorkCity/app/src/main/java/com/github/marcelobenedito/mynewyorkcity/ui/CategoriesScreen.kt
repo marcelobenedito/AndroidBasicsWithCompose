@@ -33,11 +33,13 @@ import com.github.marcelobenedito.mynewyorkcity.ui.theme.MyNewYorkCityTheme
 
 @Composable
 fun CategoriesScreen(
+    currentSelectedCategory: Category?,
     categories: List<Category>,
     onCategoryClicked: (Category) -> Unit,
     modifier: Modifier = Modifier
 ) {
     CategoriesList(
+        currentSelectedCategory = currentSelectedCategory,
         categories = categories,
         onCategoryClicked = onCategoryClicked,
         modifier = modifier.padding(horizontal = 16.dp)
@@ -46,6 +48,7 @@ fun CategoriesScreen(
 
 @Composable
 fun CategoriesList(
+    currentSelectedCategory: Category?,
     categories: List<Category>,
     onCategoryClicked: (Category) -> Unit,
     modifier: Modifier = Modifier
@@ -61,7 +64,7 @@ fun CategoriesList(
                 style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold)
             )
             Spacer(modifier = Modifier.height(16.dp))
-            IntroductionCard()
+            IntroductionCard(text = stringResource(id = R.string.home_introduction))
             Spacer(modifier = Modifier.height(16.dp))
         }
         items(categories) { category ->
@@ -69,62 +72,13 @@ fun CategoriesList(
                 title = category.name,
                 subtitle = category.places.size.toString(),
                 image = category.imageResourceId,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { onCategoryClicked(category) }
+                onClick = { onCategoryClicked(category) },
+                isSelected = currentSelectedCategory == category,
+                modifier = Modifier.fillMaxWidth()
             )
         }
         item {
             Spacer(modifier = Modifier.height(16.dp))
-        }
-    }
-}
-
-@Composable
-fun IntroductionCard(modifier: Modifier = Modifier) {
-    Card(
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.tertiaryContainer
-        ),
-        modifier = modifier
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-        ) {
-            Icon(
-                imageVector = Icons.Filled.Lightbulb,
-                contentDescription = null
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(
-                text = stringResource(id = R.string.home_introduction),
-                style = MaterialTheme.typography.bodyLarge
-            )
-        }
-    }
-}
-
-@Preview(name = "IntroductionCard - Light")
-@Composable
-fun IntroductionCardLightPreview() {
-    MyNewYorkCityTheme {
-        Surface {
-            IntroductionCard()
-        }
-    }
-}
-
-@Preview(
-    name = "IntroductionCard - Dark",
-    uiMode = UI_MODE_NIGHT_YES
-)
-@Composable
-fun IntroductionCardDarkPreview() {
-    MyNewYorkCityTheme {
-        Surface {
-            IntroductionCard()
         }
     }
 }
@@ -135,6 +89,7 @@ fun CategoriesScreenLightPreview() {
     MyNewYorkCityTheme {
         Surface {
             CategoriesScreen(
+                currentSelectedCategory = categories[0],
                 categories = categories,
                 onCategoryClicked = {}
             )
@@ -151,6 +106,7 @@ fun CategoriesScreenDarkPreview() {
     MyNewYorkCityTheme {
         Surface {
             CategoriesScreen(
+                currentSelectedCategory = categories[0],
                 categories = categories,
                 onCategoryClicked = {}
             )
