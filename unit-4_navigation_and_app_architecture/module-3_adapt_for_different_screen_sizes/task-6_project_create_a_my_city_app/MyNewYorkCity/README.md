@@ -6,15 +6,15 @@ MyNewYork app provides some lists of recommendations for different activities an
 It's developed using Jetpack Compose components like ```Column```, ```Button```, ```Text```, ```Image```, and ```Modifier```.
 
 <p align="center">
-  <img src="./asset-docs/categories_demo_light.png" width="300px" alt="Screenshot displaying the home screen for phone size.">
-  <img src="./asset-docs/places_demo_light.png" width="300px" alt="Screenshot displaying the places for the selected category for phone size.">
-  <img src="./asset-docs/details_demo_light.png" width="300px" alt="Screenshot displaying the details for the selected place for phone size.">
+  <img src="./asset-docs/categories_demo_light.png" width="200px" alt="Screenshot displaying the home screen for phone size.">
+  <img src="./asset-docs/places_demo_light.png" width="200px" alt="Screenshot displaying the places for the selected category for phone size.">
+  <img src="./asset-docs/details_demo_light.png" width="200px" alt="Screenshot displaying the details for the selected place for phone size.">
 </p>
 
 <p align="center">
-  <img src="./asset-docs/categories_demo_dark.png" width="300px" alt="Screenshot displaying the home screen for phone size in dark mode.">
-  <img src="./asset-docs/places_demo_dark.png" width="300px" alt="Screenshot displaying the places for the selected category for phone size in dark mode.">
-  <img src="./asset-docs/details_demo_dark.png" width="300px" alt="Screenshot displaying the details for the selected place for phone size in dark mode.">
+  <img src="./asset-docs/categories_demo_dark.png" width="200px" alt="Screenshot displaying the home screen for phone size in dark mode.">
+  <img src="./asset-docs/places_demo_dark.png" width="200px" alt="Screenshot displaying the places for the selected category for phone size in dark mode.">
+  <img src="./asset-docs/details_demo_dark.png" width="200px" alt="Screenshot displaying the details for the selected place for phone size in dark mode.">
 </p>
 
 <p align="center">
