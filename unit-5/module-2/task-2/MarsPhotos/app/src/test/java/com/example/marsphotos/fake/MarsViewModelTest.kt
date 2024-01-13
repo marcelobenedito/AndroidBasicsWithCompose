@@ -19,7 +19,12 @@ class MarsViewModelTest {
             marsPhotosRepository = FakeNetworkPhotosRepository()
         )
         assertEquals(
+<<<<<<< HEAD
+            MarsUiState.Success("Success: ${FakeDataSource.photosList.size} Mars " +
+                    "photos retrieved"),
+=======
             MarsUiState.Success(FakeDataSource.photosList),
+>>>>>>> 1130e6b (Display mars images using Coil library, and add retry on failure)
             marsViewModel.marsUiState
         )
     }
