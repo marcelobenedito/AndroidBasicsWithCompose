@@ -1,7 +1,11 @@
 Bookshelf app
 =================================
 
-In progress...
+Bookshelf app is a demo app that displays a list of books and its details with images from the Google Books API.
+
+The data is stored on a Web server as a REST web service.
+
+This app demonstrated the use of Retrofit to make REST requests to the web service, kotlinx.serialization to handle the deserialization of the returned JSON to Kotlin data objects, and Coil to load images by URL.
 
 It's developed using Jetpack Compose components like ```Column```, ```Button```, ```Text```, ```Image```, and ```Modifier```.
 
